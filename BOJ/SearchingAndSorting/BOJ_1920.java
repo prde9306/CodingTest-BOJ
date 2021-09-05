@@ -40,6 +40,7 @@ public class BOJ_1920 {
         }
     }
 
+
     //sol2, hashSet이용
     public static void main3(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -60,7 +61,30 @@ public class BOJ_1920 {
         }
     }
 
-    //sol3
+    //sol3 hashSet 이렇게 풀어도 됨
+
+    public ArrayList<Integer> solution(int N, int M, int[]A, int[]B){
+        //hashSet,
+        //bsearch
+        //두개 풀이 생각해 내야 함
+        ArrayList<Integer> answer = new ArrayList<>();
+
+        HashSet<Integer> hs = new HashSet<>();
+        for(int i=0; i<N; i++){
+            hs.add(A[i]);
+        }
+        for(int j=0; j<M; j++){
+            if(hs.contains(B[j])){
+                answer.add(1);
+            }
+            else{
+                answer.add(0);
+            }
+        }
+        return answer;
+    }
+
+    //sol4
     //bSearch많이 사용됨(이렇게 생각함)
     public static boolean bSearch(int[] arr, int target) {
         int min = 0;
@@ -80,7 +104,7 @@ public class BOJ_1920 {
         return false;
     }
 
-    //sol 4
+    //sol 5
     public static void main4(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -107,4 +131,23 @@ public class BOJ_1920 {
         }
         System.out.println(sb.toString());
     }
+
+    //sol6 시간 초과
+
+
+     public ArrayList<Integer> solution(int N, int M, int[]A, int[]B){
+
+     ArrayList<Integer> answer = new ArrayList<>();
+
+     for(int i=0; i<M; i++){
+     int cnt =0;
+     for(int j=0; j<N; j++){
+     if(B[i]==A[j]) cnt++;
+     }
+     answer.add(cnt);
+     }
+     return answer;
+     }
+
+
 }
