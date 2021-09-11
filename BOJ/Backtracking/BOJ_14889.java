@@ -45,7 +45,7 @@ public class BOJ_14889 {
             return;
         }
 
-        //이쪽 재귀가 계속..
+        //조합 재귀 똑바로 알기 (강의 조합 구하기)
         for(int i = idx; i < N; i++) {
             // 방문하지 않았다면?
             if(!visit[i]) {

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+////https://woongsios.tistory.com/234?category=710020
 class island implements Comparable<island>{
 
     int S, E, L;
