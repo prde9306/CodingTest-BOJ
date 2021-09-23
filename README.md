@@ -3,6 +3,7 @@
 1. BackTracking
 2. BaseDataStructure
 3. DFS/BFS
+   * BOJ_3085 - DFS & 시계방향으로 푸는 문제 아니다.(비교하기) 
 4. DynamicProgramming
 5. Search/Sort
    * BOJ_2750, 2751 Arrays.sort()로 못푼다. Arrays.sort는 dual-pivot Quicksort알고리즘 이용(평균 시간 복잡도 O(nlogn) 최악의 경우 O(n^2)) - Collections.sort()로 해결해야 한다.
