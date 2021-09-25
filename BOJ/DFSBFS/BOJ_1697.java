@@ -1,9 +1,11 @@
 package BOJ.DFSBFS;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+//-1,1,*2를 어떻게 처리할지 구현능력**
+// 실제 풀이메커니즘은 인프런 송아지 문제랑 동일하다.
+
 
 public class BOJ_1697 {
     static int N;
@@ -15,6 +17,7 @@ public class BOJ_1697 {
         N = sc.nextInt();
         K = sc.nextInt();
 
+        //이런 예외상항 꼭 생각해야.
         if (N == K) {
             System.out.println(0);
         } else {
