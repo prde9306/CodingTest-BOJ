@@ -4,68 +4,67 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BOJ_12851 {
-    //가장 빠른 시간으로 찾는 방법 몇 가지인지 추가로
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
-    class Main{
+class Main {
+    static int N, K;
+    static int[] time = new int[100001];
+    static int minTime = Integer.MAX_VALUE;
+    static int count = 0;
 
-        static int S, E;
-        int []checked = new int[100001];
-        Queue<Integer> qu = new LinkedList<>();
-        int next =0;
-        static int answer =0;
-        public void BFS(int S){
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
 
-            qu.offer(S);
+        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        K = Integer.parseInt(st.nextToken());
 
-            checked[S]=1;
-
-            while(!qu.isEmpty()){
-
-                int temp = qu.poll();
-
-                for(int i=0; i<3; i++){
-
-                    if(i==0){
-                        next = temp +1;
-                    }else if(i==1){
-                        next = temp -1;
-                    }else{
-                        next = temp*2;
-                    }
-
-                    if(next == E){
-                        answer++;
-                        System.out.println(checked[temp]);
-                    }
-
-                    if(next>=0 && next<=100000 && checked[next]==0){
-                        qu.offer(next);
-                        checked[next]= checked[temp]+1;
-                    }
-                }
-            }
-            System.out.println(answer);
+        if (N >= K) {
+            System.out.println((N-K) + "\n1");
+            return;
         }
 
-        public static void main(String[] args) throws IOException {
-            Main T = new Main();
-            Scanner sc = new Scanner(System.in);
+        bfs();
 
-            S = sc.nextInt();
-            E = sc.nextInt();
-
-            if(S==E){
-                System.out.print(0);
-            }else{
-                T.BFS(S);
-            }
-
-        }
+        System.out.println(minTime + "\n" + count);
     }
 
+    static void bfs() {
+        Queue<Integer> q = new LinkedList<Integer>();
+
+        q.add(N);
+        time[N] = 1;
+
+        while (!q.isEmpty()) {
+            int now = q.poll();
+
+            // now 방문 시간이 최소 시간보다 크면 뒤는 더 볼 필요 없음
+            if (minTime < time[now]) return;
+
+            for (int i=0; i<3; i++) {
+                int next;
+
+                if (i == 0)         next = now + 1;
+                else if (i == 1)    next = now - 1;
+                else                next = now * 2;
+
+                if (next < 0 || next > 100000) continue;
+
+                if (next == K) {
+                    minTime = time[now];
+                    count++;
+                }
+
+                // 첫 방문이거나 (time[next] == 0)
+                // 이미 방문한 곳이어도 같은 시간에 방문했다면 (time[next] == time[now] + 1)
+                // 경우의 수에 추가될 수 있기 때문에 Queue 에 한번 더 넣어줌
+                if (time[next] == 0 || time[next] == time[now] + 1) {
+                    q.add(next);
+                    time[next] = time[now] + 1;
+                }
+            }
+        }
+    }
 }
