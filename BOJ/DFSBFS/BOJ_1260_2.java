@@ -18,7 +18,6 @@ class Main{
 
             if(board[j][i]==1 && checked[i]==false){
                 DFS(i);
-
             }
         }
     }

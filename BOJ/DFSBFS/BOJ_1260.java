@@ -108,6 +108,7 @@ public class BOJ_1260 {
     }
 }
 
+
 class State{
     public final int nodeIndex;     // 현재 정점의 수
     public final int depth;         // 탐색의 깊이
