@@ -72,6 +72,7 @@ class Main {
         for (int i = 0; i < N; i++) {
             nums[i] = sc.nextInt();
         }
+
         while (true) {
             if (sum >= S) { //조건 만족
                 sum -= nums[left];
